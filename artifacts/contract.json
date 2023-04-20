@@ -1,0 +1,97 @@
+{
+    "name": "ElectronApp",
+    "methods": [
+        {
+            "name": "add_electronics",
+            "args": [
+                {
+                    "type": "pay",
+                    "name": "pay_txn"
+                },
+                {
+                    "type": "string",
+                    "name": "name"
+                },
+                {
+                    "type": "string",
+                    "name": "description"
+                },
+                {
+                    "type": "string",
+                    "name": "imageURL"
+                },
+                {
+                    "type": "uint64",
+                    "name": "price"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "read_electronics",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "id"
+                }
+            ],
+            "returns": {
+                "type": "(address,string,string,string,uint64,uint64,uint64,uint64)"
+            }
+        },
+        {
+            "name": "buy_electronics",
+            "args": [
+                {
+                    "type": "pay",
+                    "name": "pay_txn"
+                },
+                {
+                    "type": "uint64",
+                    "name": "id"
+                },
+                {
+                    "type": "uint64",
+                    "name": "number"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "get_electronics_length",
+            "args": [],
+            "returns": {
+                "type": "uint64"
+            }
+        },
+        {
+            "name": "like",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "id"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "dislike",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "id"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}
