@@ -33,8 +33,8 @@ const AnonClient = (client: algosdk.Algodv2, appId: number): ElectronApp => {
 
 export default function App() {
 
-  const [appId, setAppId] = useState<number>(195037289);
-  // B75IU34UTN2RGWNCKTZCHGQT7IVTM5JHT3PBJLM5FFCZTUFA7KJCHVZVMU  (app address)
+  const [appId, setAppId] = useState<number>(204355776);
+  // ZPFB5G5LLJLE2RKEBYYWIXTHYRQIHQKKWW3QAUZETRO4WGGRYIE64BY23Q  (app address)
   
 
   // Setup config for client/network.
