@@ -51,9 +51,10 @@ def add_electronics(
             pay_txn.get().amount() >= pt.Int(3000),
             price.get() > pt.Int(0),
 
-            name.get() != pt.Bytes(""),
-            description.get() != pt.Bytes(""),
-            imageURL.get() != pt.Bytes("")
+            name.get() != pt.String(""),
+            description.get() != pt.String(""),
+            imageURL.get() != pt.String("")
+
         ),
 
         # 2. Add electronics to storage
@@ -67,7 +68,8 @@ def add_electronics(
         (LIKES := pt.abi.Uint64()).set(pt.Int(0)),
         (DISLIKES := pt.abi.Uint64()).set(pt.Int(0)),
 
-        (electronics_item := Electron()).set(OWNER, NAME, DESCRIPTION, IMAGEURL, PRICE, SOLD, LIKES, DISLIKES),
+        electronics_item = Electron(OWNER, NAME, DESCRIPTION, IMAGEURL, PRICE, SOLD, LIKES, DISLIKES)
+
         app.state.electronics[pt.Itob(app.state.id)].set(electronics_item),
 
         app.state.id.set(app.state.id + pt.Int(1))
@@ -99,8 +101,8 @@ def buy_electronics(pay_txn: pt.abi.PaymentTransaction, id: pt.abi.Uint64, numbe
         pt.Assert(pay_txn.get().receiver() == OWNER.get()),
         pt.Assert((number.get() * PRICE.get()) == pay_txn.get().amount()),
 
-        SOLD.set(SOLD.get() + number.get()),
-        ELECTRONICS.set(OWNER, NAME, DESCRIPTION, IMAGEURL, PRICE, SOLD, LIKES, DISLIKES),
+        SOLD = pt.Uint64(SOLD.get() + number.get())
+        ELECTRONICS = Electron(OWNER, NAME, DESCRIPTION, IMAGEURL, PRICE, SOLD, LIKES, DISLIKES)
         app.state.electronics[id].set(ELECTRONICS)
 
     )
@@ -131,7 +133,7 @@ def like(id: pt.abi.Uint64):
         (LIKES := pt.abi.Uint64()).set(ELECTRONICS.likes),
         # increment the like
         LIKES.set(LIKES.get() + pt.Int(1)),
-        (DISLIKES := pt.abi.Uint64()).set(ELECTRONICS.dislikes),
+        DISLIKES = pt.Uint64(ELECTRONICS.dislikes)
 
         ELECTRONICS.set(OWNER, NAME, DESCRIPTION, IMAGEURL, PRICE, SOLD, LIKES, DISLIKES),
         app.state.electronics[id].set(ELECTRONICS)
