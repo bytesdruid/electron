@@ -159,7 +159,7 @@ export default function App() {
               </div>
 
               <button type="submit" className="modal w-1/2 text-white bg-black hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={(e) => {
-                  addElectronicsAction()
+                  addElectronicsAction(e)
               }}>Submit</button>
 
               <button type="button" onClick={() => {
