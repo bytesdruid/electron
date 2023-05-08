@@ -99,7 +99,7 @@ export default function App() {
   }
 
   const addElectronicsAction = async () => {
-    if (name !== undefined || description !== undefined || imageURL !== undefined || price !== undefined) {
+    if (name !== undefined && description !== undefined && imageURL !== undefined && price !== undefined) {
       // If block
       e.preventDefault()
       await addElectronics(algodClient, appClient, activeAccount, appId, name, description, imageURL, price)
@@ -108,7 +108,7 @@ export default function App() {
         setmodalStatus(false);
   
         // get electronics
-        getElectronicsAction()
+        getElectronicsAction(e)
       })
     } 
   }
