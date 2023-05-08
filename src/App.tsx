@@ -108,7 +108,7 @@ export default function App() {
         setmodalStatus(false);
   
         // get electronics
-        getElectronicsAction(e)
+        getElectronicsAction()
       })
     } 
   }
