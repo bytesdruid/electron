@@ -100,7 +100,7 @@ export default function App() {
 
   const addElectronicsAction = async (e) => {
     console.log(e)
-    if (name !== "" && description !== "" && imageURL !== "" && price !== "") {
+    if (name !== "" && description !== "" && imageURL !== "") {
       // If block
       e.preventDefault()
       await addElectronics(algodClient, appClient, activeAccount, appId, name, description, imageURL, price)
