@@ -98,7 +98,7 @@ export default function App() {
     await createApp(appClient)
   }
 
-  const addElectronicsAction = async () => {
+  const addElectronicsAction = async (e) => {
     if (name !== undefined && description !== undefined && imageURL !== undefined && price !== undefined) {
       // If block
       e.preventDefault()
